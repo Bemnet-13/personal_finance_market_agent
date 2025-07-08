@@ -1,0 +1,41 @@
+# Python virtual environments
+.venv/
+env/
+venv/
+ENV/
+__pycache__/
+*.pyc
+
+# Environment variables and secrets
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/project files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Test and coverage outputs
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+pytest_cache/
+coverage.xml
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
