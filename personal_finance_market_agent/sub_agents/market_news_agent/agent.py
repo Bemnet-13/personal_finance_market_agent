@@ -7,7 +7,7 @@ from personal_finance_market_agent.tools.news_sentiment import market_news_senti
 
 MODEL="gemini-2.5-pro"
 
-risk_analyst_agent = Agent(
+market_news_agent = Agent(
     model=MODEL,
     name="market_news_agent",
     instruction=prompt.NEWS_AGENT_PROMPT,
