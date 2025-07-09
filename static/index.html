@@ -1,23 +1,126 @@
 <!doctype html>
 <html>
-  <head>
-    <title>ADK Streaming Test (Audio)</title>
-    <script src="/static/js/app.js" type="module"></script>
-  </head>
 
-  <body>
-    <h1>ADK Streaming Test</h1>
-    <div
-      id="messages"
-      style="height: 300px; overflow-y: auto; border: 1px solid black"></div>
-    <br />
+<head>
+  <title>ADK Streaming Test (Audio)</title>
+  <link href="https://fonts.googleapis.com/css?family=Arsenal:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arsenal', Arial, sans-serif;
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    <form id="messageForm">
-      <label for="message">Message:</label>
-      <input type="text" id="message" name="message" />
-      <button type="submit" id="sendButton" disabled>Send</button>
-      <button type="button" id="startAudioButton">Start Audio</button>
-    </form>
-  </body>
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      color: #3b3b5c;
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 8px #e0e7ff;
+    }
+
+    #messages {
+      height: 300px;
+      width: 420px;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 2px solid #6366f1;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08);
+      padding: 18px;
+      font-size: 1.1rem;
+      color: #22223b;
+      margin-bottom: 18px;
+    }
+
+    form#messageForm {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 12px rgba(99, 102, 241, 0.06);
+    }
+
+    label {
+      font-weight: bold;
+      color: #6366f1;
+      margin-right: 6px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1.5px solid #6366f1;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border: 2px solid #3b3b5c;
+    }
+
+    button {
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 1rem;
+      font-family: 'Arsenal', Arial, sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.10);
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    button:disabled {
+      background: #c7d2fe;
+      color: #a5b4fc;
+      cursor: not-allowed;
+    }
+
+    button#startAudioButton {
+      background: linear-gradient(90deg, #f59e42 0%, #fbbf24 100%);
+      color: #fff;
+      margin-left: 8px;
+    }
+
+    button#startAudioButton:disabled {
+      background: #fde68a;
+      color: #f59e42;
+    }
+  </style>
+  <!-- marked.js (Markdown to HTML) -->
+
+
+  <script src="/static/js/app.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- DOMPurify (Sanitize the HTML for safety) -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+</head>
+
+<body>
+  <h1>Financial Advisor Agent</h1>
+  <p>This agentic application </p>
+  <div id="messages" style="height: 300px; width: 800px; overflow-y: auto; border: 1px solid black"></div>
+  <br />
+
+  <form id="messageForm">
+    <label for="message">Message:</label>
+    <input type="text" id="message" name="message" />
+    <button type="submit" id="sendButton" disabled>Send</button>
+    <button type="button" id="startAudioButton">Start Audio</button>
+  </form>
+</body>
 
 </html>

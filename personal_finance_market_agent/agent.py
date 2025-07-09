@@ -6,9 +6,16 @@ from personal_finance_market_agent.sub_agents.data_analyst_agent.agent import da
 from personal_finance_market_agent.sub_agents.trading_analyst_agent.agent import trading_analyst_agent
 from personal_finance_market_agent.sub_agents.execution_analyst_agent.agent import execution_analyst_agent
 from personal_finance_market_agent.sub_agents.risk_analyst_agent.agent import risk_analyst_agent
+from phoenix.otel import register
 
 MODEL = "gemini-2.0-flash-exp"
 
+
+# Configure the Phoenix tracer
+tracer_provider = register(
+    project_name="default",  # Default is 'default'
+    auto_instrument=True        # Auto-instrument your app based on installed OI dependencies
+)
 
 personal_finance_market_agent = LlmAgent(
     name="personal_finance_market_agent",
@@ -28,5 +35,6 @@ personal_finance_market_agent = LlmAgent(
         AgentTool(agent=risk_analyst_agent),
     ],
 )
+
 
 root_agent = personal_finance_market_agent

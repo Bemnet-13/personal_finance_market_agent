@@ -85,23 +85,32 @@ function connectWebsocket() {
     }
 
     // If it's a text, print it
-    if (message_from_server.mime_type == "text/plain") {
-      // add a new message for a new turn
+    if (message_from_server.mime_type === "text/plain") {
+      // Add a new message for a new turn
       if (currentMessageId == null) {
         currentMessageId = Math.random().toString(36).substring(7);
-        const message = document.createElement("p");
+        const message = document.createElement("div"); // Use div for richer HTML
         message.id = currentMessageId;
-        // Append the message element to the messagesDiv
         messagesDiv.appendChild(message);
       }
 
-      // Add message text to the existing message element
       const message = document.getElementById(currentMessageId);
-      message.textContent += message_from_server.data;
 
-      // Scroll down to the bottom of the messagesDiv
+      // Append new markdown and re-render
+      if (!message.markdownBuffer) {
+        message.markdownBuffer = ""; // Initialize if doesn't exist
+      }
+      message.markdownBuffer += message_from_server.data;
+
+      // Convert to HTML and sanitize
+      const rawHtml = marked.parse(message.markdownBuffer); // requires marked.js
+      const safeHtml = DOMPurify.sanitize(rawHtml); // requires DOMPurify.js
+      message.innerHTML = safeHtml;
+
+      // Scroll to bottom
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
+    
   };
 
   // Handle connection close

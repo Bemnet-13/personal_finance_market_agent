@@ -1,3 +1,4 @@
+import os
 
 def market_news_sentiment(ticker_symbol: str):
     """
@@ -11,7 +12,8 @@ def market_news_sentiment(ticker_symbol: str):
     """
     import requests
 
-    api_key = 'demo'  # Replace with your actual API key
+    api_key = os.getenv("ALPHA_VANTAGE_API_KEY")
+ # Replace with your actual API key
     url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={ticker_symbol}&apikey={api_key}'
     
     response = requests.get(url)
