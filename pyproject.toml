@@ -6,6 +6,9 @@ authors = [{ name = "Bemnet Aschalew", email = "bemnetaschalewwodaj@gmail.com" }
 license = "Apache License 2.0"
 readme = "README.md"
 
+[tool.poetry]
+package-mode = false
+
 [tool.poetry.dependencies]
 google-cloud-aiplatform = { version = "^1.93.0", extras = [
     "adk",
@@ -18,6 +21,7 @@ python-dotenv = "^1.0.1"
 google-adk = "^1.0.0"
 openinference-instrumentation-google-adk = "^0.1.1"
 arize-phoenix-otel = "^0.12.1"
+yfinance = "^0.2.65"
 [tool.poetry.group.dev]
 optional = true
 
